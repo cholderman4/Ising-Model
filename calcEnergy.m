@@ -13,6 +13,6 @@ E = 0;
 R = sqrt(X.^2 + Y.^2);
 
 E = (-0.5)*sum(A(R <= r1 & R ~= 0))*J1*A(i,j) + (-0.5)*J2*A(i,j)*sum(A(R > r1 & R <= r2));
-
+% E = (0.5)*sum(A(R <= r1 & R ~= 0))*J1 + (0.5)*J2*sum(A(R > r1 & R <= r2));
 end
 

@@ -10,7 +10,8 @@ function [A, E] = initializeSystem(p, m, r1, r2, J1, J2)
 %%
 
 % Initially set everything to the OFF position.
-A = (-1)*ones(m); 
+A = (-1)*ones(m);
+% A = zeros(m);
 
 R = rand(m);
 
@@ -25,6 +26,5 @@ for i=1:m
 end
 
 % Divide energy in half because we counted every pair twice.
-E = (0.5)*E;
 end
 
