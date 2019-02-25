@@ -1,0 +1,18 @@
+m=20;
+i=1; j=1;
+
+x_per_dist = min(mod(A - i*ones(1,m),m), mod(i*ones(1,m)-A,m))
+y_per_dist = min(mod(A - j*ones(1,m),m), mod(j*ones(1,m)-A,m))
+
+[X, Y] = meshgrid(x_per_dist, y_per_dist);
+R = sqrt(X.^2 + Y.^2)
+
+for i=1:m
+    for j=1:m
+        
+        A(i,j) = ceil(sqrt((i-1)^2 + (j-1)^2));
+        
+    end
+end
+
+A
