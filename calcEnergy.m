@@ -1,4 +1,4 @@
-function [E] = calcEnergy(A, r1, r2, J1, J2, i, j)
+function [E] = calcEnergy(A, r1, r2, J1, J2, h, i, j)
 
 
 m = size(A,1);
@@ -12,7 +12,7 @@ E = 0;
 [X, Y] = meshgrid(x_per_dist, y_per_dist);
 R = sqrt(X.^2 + Y.^2);
 
-E = (-0.5)*sum(A(R <= r1 & R ~= 0))*J1*A(i,j) + (-0.5)*J2*A(i,j)*sum(A(R > r1 & R <= r2));
+E = (-1)*h*A(i,j) + (-0.5)*sum(A(R <= r1 & R ~= 0))*J1*A(i,j) + (-0.5)*J2*A(i,j)*sum(A(R > r1 & R <= r2));
 % E = (0.5)*sum(A(R <= r1 & R ~= 0))*J1 + (0.5)*J2*sum(A(R > r1 & R <= r2));
 end
 

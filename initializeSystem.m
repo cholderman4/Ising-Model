@@ -1,4 +1,4 @@
-function [A, E] = initializeSystem(p, m, r1, r2, J1, J2)
+function [A, E] = initializeSystem(p, m, r1, r2, J1, J2, h)
 
 %%
 % SUMMARY:    Set the initial conditions for the system.
@@ -21,7 +21,7 @@ E = 0;
 
 for i=1:m
     for j=1:m
-        E = E + calcEnergy(A, r1, r2, J1, J2, i, j);
+        E = E + calcEnergy(A, r1, r2, J1, J2, h, i, j);
     end
 end
 
