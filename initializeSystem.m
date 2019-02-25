@@ -1,4 +1,4 @@
-function [A, E] = initializeSystem(p, m)
+function [A, E] = initializeSystem(p, m, r1, r2, J1, J2)
 
 %%
 % SUMMARY:    Set the initial conditions for the system.
@@ -8,11 +8,6 @@ function [A, E] = initializeSystem(p, m)
 %                 
 % OUTPUT:     A: m by m matrix filled with +1/-1 based on the prescribed probability.
 %%
-r1 = 1;
-r2 = 9;
-J1 = 1;
-J2 = 0;
-
 
 % Initially set everything to the OFF position.
 A = (-1)*ones(m); 
