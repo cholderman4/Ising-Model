@@ -10,7 +10,7 @@ function [A, E] = initializeSystem(p, m, r1, r2, J1, J2, h)
 %%
 
 % Initially set everything to the OFF position.
-A = (-1)*ones(m);
+A = zeros(m);
 % A = zeros(m);
 
 R = rand(m);
