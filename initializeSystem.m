@@ -17,13 +17,7 @@ R = rand(m);
 
 A(R < p) = 1;
 
-E = 0;
-
-for i=1:m
-    for j=1:m
-        E = E + calcEnergy(A, r1, r2, J1, J2, h, i, j);
-    end
-end
+E = calcStartEnergy(A, r1, r2, J1, J2, h);
 
 % Divide energy in half because we counted every pair twice.
 end
