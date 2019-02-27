@@ -59,7 +59,7 @@ FUNCTION: getParamRange(n)
     
     INPUT:     n:   number of subintervals to divide each range into.
     
-    OUTPUT:    params: array of randomly ordered parameter values
+    OUTPUT:    
 
 
     

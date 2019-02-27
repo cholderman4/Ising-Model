@@ -7,6 +7,7 @@ function [A, E] = initializeSystem(p, m, params)
 %             m: the size of the system, i.e. number of nodes in row & column
 %                 
 % OUTPUT:     A: m by m matrix filled with +1/-1 based on the prescribed probability.
+%             E: the starting energy of the system.  
 %%
 
 % Initially set everything to the OFF position.

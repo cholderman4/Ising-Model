@@ -1,4 +1,14 @@
 function [A, E] = runSimulation(A, params, watchSim, E_0)
+
+%     SUMMARY:    Run the simulation until it reaches an energy minimum or runs for MAX_RUN_TIME
+%     
+%     INPUT:      A:          master matrix (m x m)
+%                 params:     parameters for the energy calculation
+%                 watchSim:   (bool) whether or not to show a movie while simulation is running
+%                 E_0:        starting energy
+%     
+%     OUTPUT:     A:  final updated matrix
+%                 E:  array of energy values saved while simulation is running
     
     eps = 1.0e-4;
 
@@ -7,14 +17,16 @@ function [A, E] = runSimulation(A, params, watchSim, E_0)
     zeroCounter = 0;
     E = E_0;    
     i=1;
+    MAX_RUN_TIME = 100000;
+    ENERGY_STEPS = 10;
     
     while (runSim)
         [A, dE] = switchRandNode(A, params);
         
-        if ( mod(i,10) == 0 )            
+        if ( mod(i,ENERGY_STEPS) == 0 )            
             E(1,end+1) = dE + E(1,end);
             
-            if ( size(E,2) >= 10000)
+            if ( size(E,2) >= MAX_RUN_TIME/ENERGY_STEPS)
                 runSim = 0;
                 zeroCounter
             end

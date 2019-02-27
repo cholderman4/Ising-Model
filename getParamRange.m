@@ -1,4 +1,13 @@
 function [params] = getParamRange(n)
+
+%%
+%     SUMMARY:   Randomize parameter choices according to prescribed ranges. 
+%     
+%     INPUT:     n:   number of subintervals to divide each range into.
+%     
+%     OUTPUT:    params: array of randomly ordered parameter values
+%%
+
     
     % Number of parameter values to randomly test.
     % n = 100;

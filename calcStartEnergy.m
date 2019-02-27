@@ -1,5 +1,15 @@
 function [E] = calcStartEnergy(A, params)
 
+%%
+%     SUMMARY:    calculate the initial energy based on the Ising Hamiltonian 
+%     
+%     INPUT:      A:      the master matrix (m x m)
+%                 params: vector of parameters for the energy function (r1, r2, J1, J2, h)
+%     
+%     OUTPUT:     E:      the starting energy of the system
+%%
+
+
 r1 = params(1);
 r2 = params(2);
 J1 = params(3);

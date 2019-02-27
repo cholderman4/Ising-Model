@@ -1,5 +1,16 @@
 function [dE] = calcDiffEnergy(A, params, i, j)
 
+%%
+%     SUMMARY:    calculate the difference in energy based on the Ising Hamiltonian 
+%     
+%     INPUT:      A: the master matrix (m x m)
+%                 params: vector of parameters for the energy function (r1, r2, J1, J2, h)
+%                 [i j]: coordinates of node that was switched (so that we don't have to calculate the whole energy, just what was changed)
+%     
+%     OUTPUT:     dE: the energy change
+%%
+    
+    % Get the individual parameter values from the params vector.
     r1 = params(1);
     r2 = params(2);
     J1 = params(3);
