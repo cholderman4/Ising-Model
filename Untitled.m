@@ -6,10 +6,11 @@
 % params = [1.7576    5.0379    1.6061   -0.3379   -3.1515];
 % params = [2.3131    10.9823    2.0505   -0.95490    0.4040];
 % params = [2.0859    5.5960    1.8687   -0.4626   3.0505];
-params = [2.0526    5.5395    1.8421   -0.4500   -1.2632];
+% params = [2.0526    5.5395    1.8421   -0.4500   -1.2632];
+params = [1.6579    4.8684    1.5263   -0.3000   -3.7895];
 
 % params = [2.0    3.5    1.0   -0.10   0];
 
-[A, E] = initializeSystem(p, m, params );
-% E = calcStartEnergy(A, params);
+[A, E] = initializeSystem(0.001, m, params );
+% E = calcStartEnergy(B, params);
 [B, E] = runSimulation(A, params, 1, E(1,end));
