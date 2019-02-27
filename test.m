@@ -1,47 +1,57 @@
 clear
-eps = 1.0e-4;
 
-% TMAX = 50000;
-% E = zeros(1,TMAX);
-p = 0.5;
-m = 60;
+randomizeParams = 1;
+randomizeA = 1;
+watchSim = 1;
 
-r1 = 2.5;
-r2 = 8.6;
-J1 = 2.5;
-J2 = -0.10;
-h = -3;
 
-runSim = 1;
-zeroCounter = 0;
+%% Initialize System
 
-[A, E(1,1)] = initializeSystem(p, m, r1, r2, J1, J2, h);
-image([0 m], [0 m], A,'CDataMapping','scaled')
-
-i=1;
-t=1;
-while (runSim)
-    [A, dE] = switchRandNode(A, r1, r2, J1, J2, h);
-    E(1,t+1) = dE + E(1,t);
-    if (i == 1000)
-        image([0 20], [0 20], A,'CDataMapping','scaled') 
-        pause(0.1)
-        i=0;
-    end
-%     pause(.05)
-    i=i+1;
-    t=t+1;
+if (randomizeParams)
+    n=20;
     
-    if (abs(dE) <= eps)
-        zeroCounter = zeroCounter + 1;
-        if (zeroCounter == 250)
-            runSim = 0;
-        end
-    else
-        zeroCounter = 0;
-    end
+    % Randomize parameter range.
+    params = getParamRange(n);
+    rng('shuffle');
+    i_rand = randperm(n);
+else
+    
 end
 
-T=1:t;
+if (randomizeA)
+    % Set properties to randomize initial set up.
+    % Skip this if the inital set up will be the limit of another simulation.
+    p = 0.5;
+    m = 80;
+    E=0;
+    [A, E] = initializeSystem(p, m, params(:,i_rand(1)) );
+else
+    E = calcStartEnergy(A, params);
+    m = size(A,1);
+end
+
+% Display initial distribution.
+image([0 m], [0 m], A,'CDataMapping','scaled')
+
+%% Run the actual simulations.
+
+% Counter for which parameter range to use.
+i = 10;
+
+% spot_param
+% [A, E] = runSimulation(A, spot_param(1), spot_param(2), spot_param(3), spot_param(4), spot_param(5), 1, E(1,end));
+
+
+params(:, i_rand(i))'
+[A, E] = runSimulation(A, params(:, i_rand(i)), watchSim, E(1,end));
+
+% i = i+1;
+% params(:, i_rand(i))'
+% [A, E] = runSimulation(A, params(:, i_rand(i)), watchSim, E(1,end));
+
+%% Displaying Results
+
+%T=1:size(E,2);
 % plot(T, E)
-% image([0 m], [0 m], A,'CDataMapping','scaled')
+image([0 m], [0 m], A,'CDataMapping','scaled')
+colorbar

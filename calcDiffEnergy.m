@@ -1,4 +1,10 @@
-function [dE] = calcDiffEnergy(A, r1, r2, J1, J2, h, i, j)
+function [dE] = calcDiffEnergy(A, params, i, j)
+
+    r1 = params(1);
+    r2 = params(2);
+    J1 = params(3);
+    J2 = params(4);
+    h = params(5);
 
 
     m = size(A,1);

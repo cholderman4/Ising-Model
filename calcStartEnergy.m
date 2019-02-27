@@ -1,5 +1,10 @@
-function [E] = calcStartEnergy(A, r1, r2, J1, J2, h)
+function [E] = calcStartEnergy(A, params)
 
+r1 = params(1);
+r2 = params(2);
+J1 = params(3);
+J2 = params(4);
+h = params(5);
 
 m = size(A,1);
 coord = 1:m;

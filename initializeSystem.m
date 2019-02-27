@@ -1,4 +1,4 @@
-function [A, E] = initializeSystem(p, m, r1, r2, J1, J2, h)
+function [A, E] = initializeSystem(p, m, params)
 
 %%
 % SUMMARY:    Set the initial conditions for the system.
@@ -17,7 +17,7 @@ R = rand(m);
 
 A(R < p) = 1;
 
-E = calcStartEnergy(A, r1, r2, J1, J2, h);
+E = calcStartEnergy(A, params);
 
 % Divide energy in half because we counted every pair twice.
 end
